@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { SearchOutlined, ShoppingCartOutlined, AccountCircleOutlined } from '@material-ui/icons';
 import { FaBars } from 'react-icons/fa';
@@ -40,7 +40,7 @@ const Logo = styled.h1`
     color: #172D52;
     font-weight: 900;
     text-align: center;
-    ${mobile({marginLeft: -8})}
+    ${mobile({marginLeft: -8, fontSize: 26})}
 
     &:hover {
         transform: scale(1.1);
@@ -98,7 +98,7 @@ const ListItem = styled.li`
 const NavItem = styled(Link)`
     font-size: 20px;
     color: #172D52;
-    margin-left: 8px;
+    margin-left: 11px;
     margin-top: 5px;
     display: none;
     ${tablet({display: 'block'})}
@@ -131,7 +131,7 @@ const Navbar = ({ toggle }) => {
                         <Link to='/products/furniture' style={{textDecoration: 'none'}}>
                             <ListItem>Products</ListItem>
                         </Link>
-                        <Link to='/contact'  style={{textDecoration: 'none'}}>
+                        <Link to='/contact' style={{textDecoration: 'none'}}>
                             <ListItem>Contact</ListItem>
                         </Link>
                     </CenterList>

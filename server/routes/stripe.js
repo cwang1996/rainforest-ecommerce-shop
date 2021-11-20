@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const KEY = process.env.STRIPE_KEY;
+require('dotenv').config();
+const KEY = process.env.STRIPE_SECRET_KEY;
 const stripe = require('stripe')(KEY);
 
 router.post('/payment', (req, res) => {

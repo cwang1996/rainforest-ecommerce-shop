@@ -8,11 +8,22 @@ import { Link } from 'react-router-dom';
 
 const PurchaseContainer = styled.div`
     height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
+
+const PurchaseWrap = styled.div`
+    width: 325px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: 20px;
+    text-align: center;
+    margin: 0 auto;
 `
 
 const Button = styled.button`
@@ -65,12 +76,14 @@ const PurchaseSuccessful = () => {
 
     return (
         <PurchaseContainer>
-            {orderId 
-                ? `Order has been created successfully. Your order number is ${orderId}`
-                : `Your order is being prepared. Thank you for choosing Rainforest`}
-                <Link to='/'>
-                    <Button>Homepage</Button>
-                </Link>
+            <PurchaseWrap>
+                {orderId 
+                    ? `Order has been created successfully. Your order number is ${orderId}`
+                    : `Your order is being prepared. Thank you for choosing Rainforest`}
+                    <Link to='/'>
+                        <Button>Homepage</Button>
+                    </Link>
+            </PurchaseWrap>
         </PurchaseContainer>
     )
 }

@@ -4,7 +4,6 @@ const { verifyTA, verifyAdmin } = require('./verifyToken');
 const router = require('express').Router();
  
 //CREATE
-
 router.post('/', verifyAdmin, async (req, res) => {
     const newProduct = new Product(req.body);
 
