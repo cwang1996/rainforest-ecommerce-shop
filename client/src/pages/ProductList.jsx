@@ -48,12 +48,14 @@ const Select = styled.select`
     border: none;
     outline: none;
     cursor: pointer;
+    margin-left: 10px;
 `
 
 const Option = styled.option`
     font-family: 'Muli';
     font-size: 16px;
     color: #8C95A8;
+    text-align: center;
 `
 
 const ProductList = () => {

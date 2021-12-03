@@ -57,7 +57,7 @@ const RightNav = styled.div`
 
 const MenuItem = styled.div`
     cursor: pointer;
-    margin-left: 5px;
+    margin-left: 10px;
     color: #172D52;
     max-width: 35px;
     margin-top: 2px;
@@ -67,6 +67,7 @@ const MenuItem = styled.div`
         transform: scale(1.1);
     }
 `
+
 const CenterList = styled.ul`
     list-style-type: none;
     display: flex;
@@ -98,8 +99,9 @@ const ListItem = styled.li`
 const NavItem = styled(Link)`
     font-size: 20px;
     color: #172D52;
-    margin-left: 11px;
-    margin-top: 5px;
+    margin-right: -15px;
+    margin-left: 23px;
+    margin-top: 4px;
     display: none;
     ${tablet({display: 'block'})}
     &:hover {
@@ -148,7 +150,7 @@ const Navbar = ({ toggle }) => {
                     <Link to='/cart'>
                         <MenuItem>
                             <Badge badgeContent={quantity} color="primary">
-                                <ShoppingCartOutlined style={{fontSize: 25, marginTop: -5}}/>
+                                <ShoppingCartOutlined style={{fontSize: 25, marginTop: -5, marginLeft: 1}}/>
                             </Badge>
                         </MenuItem>
                     </Link>

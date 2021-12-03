@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 import styled from 'styled-components';
 import Announcement from '../components/Announcement';
 import Navbar from '../components/Navbar';
@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import News from '../components/News';
 import { mobile } from '../responsive';
 import { Link } from 'react-router-dom';
+import Menu from '../components/Menu';
 
 const Wrapper = styled.div`
     max-width: 1200px;
@@ -87,10 +88,18 @@ const Create = styled.p`
 const LoginContainer = styled.div``
 
 const Login = () => {
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggle = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
         <LoginContainer>
             <Announcement />
-            <Navbar />
+            <Navbar toggle={toggle} />
+            <Menu isOpen={isOpen} toggle={toggle}/>
             <Wrapper>
                 <Title>Login</Title>
                 <Form>

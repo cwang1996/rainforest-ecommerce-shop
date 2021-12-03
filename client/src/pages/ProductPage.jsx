@@ -7,7 +7,7 @@ import News from '../components/News';
 import { tablet } from '../responsive';
 import { useLocation } from 'react-router-dom';
 import { publicRequest } from '../requestMethods';
-import { Add, Remove } from '@material-ui/icons';
+import { Add, ContactSupportTwoTone, Remove } from '@material-ui/icons';
 import { addProduct } from '../redux/cartRedux';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory} from 'react-router-dom';
@@ -125,6 +125,22 @@ const BackButton = styled.div`
     margin: 0 auto;
 `
 
+const AddMessage = styled.div`
+    position: absolute;
+    top: 150px;
+    right: 10px;
+    font-size: 15px;
+    font-family: 'Muli';
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid #df362d;
+    padding: 10px 20px;
+    color: #df362d;
+    letter-spacing: .1em;
+    transition: all .2s ease;
+    opacity: ${({ addMess }) => (addMess ? 1 : 0)};
+`
+
 const ProductPage = () => {
 
     const location = useLocation();
@@ -133,6 +149,16 @@ const ProductPage = () => {
     const [quantity, setQuantity] = useState(1);
     const dispatch = useDispatch();
     const [disable, setDisable] = useState(false);
+
+    const [addMess, setAddMess] = useState(false);
+
+    const showAddMess = () => {
+        setAddMess(!addMess);
+
+        setTimeout(() => {
+            setAddMess(addMess);
+        }, 2000)
+    }
 
     useEffect(() => {
         const getProduct = async () => {
@@ -155,7 +181,7 @@ const ProductPage = () => {
     const handleClick = () => {
         dispatch(
             addProduct({ ...product, quantity })
-        )
+        ) 
         setDisable(true);
     }
 
@@ -201,7 +227,8 @@ const ProductPage = () => {
                                 <Add onClick={() => handleQuantity('increase')} style={{paddingTop: 10, cursor: 'pointer'}} />
                         </AmountContainer>
                     </AddContainer>
-                    <Button disabled={disable} type='filled' onClick={handleClick}>Add to Cart</Button>
+                    <Button disabled={disable} type='filled' onClick={() => {handleClick(); showAddMess();}}>Add to Cart</Button>
+                    <AddMessage addMess={addMess}>Added to cart!</AddMessage>
                     <StripeCheckout
                                 name = 'Rainforest'
                                 image = 'https://cdn-icons-png.flaticon.com/512/327/327372.png'
