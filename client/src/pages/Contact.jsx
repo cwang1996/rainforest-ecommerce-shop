@@ -1,4 +1,4 @@
-import { React, useRef } from 'react'
+import { React, useRef, useState } from 'react'
 import styled from 'styled-components';
 import Announcement from '../components/Announcement'
 import Navbar from '../components/Navbar';
@@ -6,6 +6,7 @@ import News from '../components/News';
 import Footer from '../components/Footer';
 import { mobile } from '../responsive';
 import emailjs from 'emailjs-com';
+import Menu from '../components/Menu';
 
 const ContactContainer = styled.div`
     width: 100%;
@@ -92,6 +93,12 @@ const Button = styled.button`
 
 const Contact = () => {
 
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggle = () => {
+        setIsOpen(!isOpen);
+    };
+
     const formRef = useRef();
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -107,7 +114,8 @@ const Contact = () => {
     return (
         <ContactContainer>
             <Announcement />
-            <Navbar />
+            <Navbar toggle={toggle} />
+            <Menu isOpen={isOpen} toggle={toggle}/>
             <Wrapper>
                 <Title>Contact Us</Title>
                 <Desc>Leave us a message! We are always happy to help and assist with any questions that you may have regarding our products.</Desc>

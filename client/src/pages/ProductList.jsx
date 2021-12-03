@@ -6,6 +6,7 @@ import Announcement from '../components/Announcement';
 import ProductsAll from '../components/ProductsAll';
 import News from '../components/News';
 import { useLocation } from 'react-router';
+import Menu from '../components/Menu';
 
 
 const ProductListContainer = styled.div`
@@ -56,6 +57,13 @@ const Option = styled.option`
 `
 
 const ProductList = () => {
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggle = () => {
+        setIsOpen(!isOpen);
+    };
+
     const location = useLocation();
     const cat = (location.pathname.split('/')[2]);
     const [ sort, setSort ] = useState('newest');
@@ -72,7 +80,8 @@ const ProductList = () => {
     return (
         <ProductListContainer>
             <Announcement />
-            <Navbar />
+            <Navbar toggle={toggle} />
+            <Menu isOpen={isOpen} toggle={toggle}/>
             <Title>Furniture</Title>
             <FilterContainer>
                 <Filter type='left'>
