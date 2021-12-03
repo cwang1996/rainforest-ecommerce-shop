@@ -7,13 +7,14 @@ import News from '../components/News';
 import { tablet } from '../responsive';
 import { useLocation } from 'react-router-dom';
 import { publicRequest } from '../requestMethods';
-import { Add, ContactSupportTwoTone, Remove } from '@material-ui/icons';
+import { Add, Remove } from '@material-ui/icons';
 import { addProduct } from '../redux/cartRedux';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory} from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
 import { useSelector } from 'react-redux';
 import { userRequest } from '../requestMethods';
+import Menu from '../components/Menu';
 
 const KEY = 'pk_test_51JtJc7BxCRgOKKURT5I6rLl2NWX9IfgdrUJ4UI79VcVW10t8HuoxEhOcHdOhFBxtbN2AWxyM5qpYqiTitHLnIknO00yRXVlwRI'
 
@@ -149,8 +150,13 @@ const ProductPage = () => {
     const [quantity, setQuantity] = useState(1);
     const dispatch = useDispatch();
     const [disable, setDisable] = useState(false);
-
     const [addMess, setAddMess] = useState(false);
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggle = () => {
+        setIsOpen(!isOpen);
+    };
 
     const showAddMess = () => {
         setAddMess(!addMess);
@@ -211,7 +217,8 @@ const ProductPage = () => {
     return (
         <ProductPageContainer>
             <Announcement />
-            <Navbar />
+            <Navbar toggle={toggle} />
+            <Menu isOpen={isOpen} toggle={toggle}/>
             <Wrapper>
                 <ImgContainer>
                     <Image src={product.img} />

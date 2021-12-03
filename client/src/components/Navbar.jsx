@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SearchOutlined, ShoppingCartOutlined, AccountCircleOutlined } from '@material-ui/icons';
+import MenuOutlinedIcon from '@material-ui/icons/MenuOutlined';
 import { FaBars } from 'react-icons/fa';
 import { Badge } from '@material-ui/core';
 import { mobile, tablet } from '../responsive';
@@ -68,6 +69,21 @@ const MenuItem = styled.div`
     }
 `
 
+const MenuItemSearch = styled.div`
+    cursor: pointer;
+    margin-left: 10px;
+    color: #172D52;
+    max-width: 35px;
+    margin-top: 2px;
+
+    &:hover {
+        color: #234785;
+        transform: scale(1.1);
+    }
+
+    ${tablet({display: 'none'})}
+`
+
 const CenterList = styled.ul`
     list-style-type: none;
     display: flex;
@@ -97,11 +113,10 @@ const ListItem = styled.li`
 `
 
 const NavItem = styled(Link)`
-    font-size: 20px;
+    font-size: 25px;
     color: #172D52;
-    margin-right: -15px;
-    margin-left: 23px;
-    margin-top: 4px;
+    margin-right: 3px;
+    margin-top: 3px;
     display: none;
     ${tablet({display: 'block'})}
     &:hover {
@@ -139,9 +154,12 @@ const Navbar = ({ toggle }) => {
                     </CenterList>
                 </CenterNav>
                 <RightNav>
-                    <MenuItem>
+                    <MenuItemSearch>
                             <SearchOutlined style={{fontSize: 25}}/>
-                    </MenuItem>
+                    </MenuItemSearch>
+                    <NavItem>
+                        <MenuOutlinedIcon onClick={toggle} />
+                    </NavItem>
                     <MenuItem>
                         <Link to='/login' style={{color: '#172d52'}}>
                             <AccountCircleOutlined style={{fontSize: 25}}/>
@@ -154,9 +172,9 @@ const Navbar = ({ toggle }) => {
                             </Badge>
                         </MenuItem>
                     </Link>
-                    <NavItem>
+                    {/* <NavItem>
                         <FaBars onClick={toggle} />
-                    </NavItem>
+                    </NavItem> */}
                 </RightNav>
             </NavbarContainer>
         </Nav>
