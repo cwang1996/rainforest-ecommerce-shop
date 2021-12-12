@@ -1,4 +1,4 @@
-# Rainforest E-Commerce Sho
+# Rainforest E-Commerce Shop
 
 ### [Live Site](https://rainforest-ecommerce-shop.herokuapp.com/)
 
