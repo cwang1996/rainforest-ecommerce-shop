@@ -27,6 +27,7 @@ Featured ideas to implement:
 
 - Login and register for both admin and users.
 - Admin dashboard with ability to track sales and revenue as well as add or remove products.
+- Feature to add or remove cart items already in the shopping cart
 
 Setup:
 - run ```npm i && npm start``` for both client and server side to start the development server
