@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout';
 import { Link, useHistory } from 'react-router-dom';
 import { userRequest } from '../requestMethods';
-import Menu from '../components/Menu';
 
 const KEY = 'pk_test_51JtJc7BxCRgOKKURT5I6rLl2NWX9IfgdrUJ4UI79VcVW10t8HuoxEhOcHdOhFBxtbN2AWxyM5qpYqiTitHLnIknO00yRXVlwRI'
 
@@ -214,12 +213,6 @@ const Button = styled.button`
 
 const Cart = () => {
 
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggle = () => {
-        setIsOpen(!isOpen);
-    };
-
     const cart = useSelector((state) => state.cart)
     const [stripeToken, setStripeToken] = useState(null)
     const history = useHistory();
@@ -247,8 +240,7 @@ const Cart = () => {
     return (
         <CartContainer>
             <Announcement />
-            <Navbar toggle={toggle} />
-            <Menu isOpen={isOpen} toggle={toggle}/>
+            <Navbar />
                 <Wrapper>
                     <Title>Your Cart</Title>
                         <Top>
@@ -268,7 +260,7 @@ const Cart = () => {
                                             <Quantity>Quantity</Quantity>
                                             <ProductAmount>{product.quantity}</ProductAmount>
                                         </ProductAmountContainer>
-                                        {/* <ProductRemove >Remove</ProductRemove> */}
+                                        {/* <ProductRemove>Remove</ProductRemove> */}
                                     </Details>
                                 </ProductDetail>
                                 <PriceDetail>
@@ -290,8 +282,8 @@ const Cart = () => {
                             image = 'https://cdn-icons-png.flaticon.com/512/327/327372.png'
                             billingAddress
                             shippingAddress
-                            description = {`Your total is $${cart.total}`}
-                            amount = {cart.total*100}
+                            description = {`Your total is $${Math.round(cart.total * 100) / 100}`}
+                            amount = {Math.round(cart.total*100)/100}
                             token= {onToken}
                             stripeKey= {KEY}
                             >
